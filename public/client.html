@@ -1,0 +1,24 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Sockets example</title>
+        <script src="angular.min.js"></script>
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="client.js"></script>
+    </head>
+     <body ng-app="socketsApp">
+        <div ng-controller="socketsController">
+        
+            <h1>Sockets example</h1>
+            <ul>
+                <li ng-repeat="album in albums">
+                    {{ album.artist + ' - ' + album.title }}
+                </li>
+            </ul>
+            
+            <input type="text" ng-model="newArtist" />
+            <input type="text" ng-model="newTitle" />
+            <button ng-click="addAlbum()">Add album</button>
+        </div>
+    </body>
+</html>

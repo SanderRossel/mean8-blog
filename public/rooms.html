@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Rooms example</title>
+        <script src="angular.min.js"></script>
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="rooms.js"></script>
+    </head>
+     <body ng-app="roomsApp">
+        <div ng-controller="roomsController">
+        
+            <h1>Rooms example</h1>
+            <div>
+                <h2>Rooms</h2>
+                <div ng-repeat="room in rooms">
+                    <span ng-click="joinRoom(room)">{{ room.name }}</span>
+                </div>
+                <hr />
+                
+                <div class="room" ng-repeat="room in joinedRooms">
+                    <h2>{{ room.name }}</h2>
+                    <button ng-click="leaveRoom(room)">Leave</button>
+                    <ul>
+                        <li ng-repeat="message in room.messages">
+                            {{ message }}
+                        </li>
+                    </ul>
+                    <input type="text" ng-model="room.newMessage" />
+                    <button ng-click="sendMessage(room)">Send</button>
+                    <hr />
+                </div>
+            </div>
+            
+            <input type="text" ng-model="newRoom" />
+            <button ng-click="createRoom()">Add room</button>
+        </div>
+    </body>
+</html>
